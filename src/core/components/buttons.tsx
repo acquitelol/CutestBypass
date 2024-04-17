@@ -28,6 +28,6 @@ export function SolidButton({ style, ...props }: Arguments<typeof BaseButton>[0]
 export function DropdownButton(props: Arguments<typeof BaseButton>[0]) {
     return <BaseButton 
         {...props}
-        className={'_DropdownMenuItem_tgmt4_59' + ' ' + (props.className ?? '')}
+        className={'_AzaleaDropdown' + ' ' + (props.className ?? '')}
     />;
 }

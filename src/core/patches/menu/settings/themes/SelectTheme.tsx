@@ -24,7 +24,7 @@ function SelectTheme({ label, selected, setSelected }: SelectThemeProps) {
 
     return <select 
         value={selected}
-        className='_SelectTrigger_g2nok_1'
+        className='_AzaleaSelect'
         style={styles.selector}
         onChange={e => {
             const index = Number(e.target.value);

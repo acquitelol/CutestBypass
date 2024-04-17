@@ -38,6 +38,7 @@ export function SectionBody({ children, style }: SectionBodyProps) {
 
 export function Section({ title, children, collapsable = true, style }: SectionProps) {
     const [hidden, setHidden] = React.useState(false);
+    
     return <div style={mergeStyles({ marginInline: '2em' }, style)}>
         <div 
             style={commonStyles.merge(x => [

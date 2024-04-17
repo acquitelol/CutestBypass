@@ -54,3 +54,41 @@ html {
     background: var(--spx-button-contained-background-hover);
     color: var(--spx-button-contained-color-hover);
 }
+
+._AzaleaDropdown {
+    font-size: var(--spx-font-size-base);
+    -webkit-text-fill-color: initial;
+    color: var(--colours-text-body);
+    border-radius: var(--spx-radius-sm);
+    display: flex;
+    align-items: center;
+    padding: var(--spx-unit-2) var(--spx-unit-4);
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none;
+}
+
+._AzaleaDropdown:hover {
+    background-color: var(--colours-nav-bar-hover);
+    cursor: pointer;
+}
+
+._AzaleaSelect {
+    background-color: var(--colours-plain-background);
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--colours-border);
+    -webkit-text-fill-color: initial;
+    color: var(--colours-text-body);
+    font-size: 100%;
+    height: var(--spx-unit-12);
+    padding: var(--spx-unit-2) var(--spx-unit-3);
+    border-radius: var(--spx-unit-1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}

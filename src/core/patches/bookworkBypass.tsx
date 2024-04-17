@@ -91,8 +91,8 @@ function handler() {
     const codeMap = new Map<string, any>([['code', ''], ['answers', []]]);
 
     patcher.after('render', WAC.type, (_, { props: { children } }) => {
-        const topSection: any[] = findInReactTree(children, x => x?.find(y => y.props.className.includes('Bookwork')));
-        const bookworkSection = topSection?.find(x => x.props?.className?.includes('Bookwork'))?.props?.children;
+        const topSection: any[] = findInReactTree(children, x => x?.find(y => y.props?.className?.includes('Bookwork') && y.props?.shapeVariant === 'Boxy'));
+        const bookworkSection = topSection?.find(x => x.props?.className?.startsWith('Bookwork') && x.props?.shapeVariant === 'Boxy')?.props?.children;
         const firstOption = findInReactTree(children, x => x.props.choices && x.props.option);
 
         if (!bookworkSection) return;

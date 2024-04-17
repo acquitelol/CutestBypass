@@ -64,7 +64,7 @@ const defineExtendedConfig = ({ plugins, ...options }: RollupOptions) => defineC
 
 export default [
     defineExtendedConfig({
-        input: 'src/loader/index.ts',
+        input: 'src/index.ts',
 
         output: [
             {
@@ -84,18 +84,6 @@ export default [
             esbuild({ minify: true, target: 'ES2020' }),
             obfuscateCode()
         ]
-    }),
-    defineExtendedConfig({
-        input: 'src/loader/worker.ts',
-
-        output: [
-            {
-                file: 'dist/worker.js',
-                format: 'iife',
-                inlineDynamicImports: true,
-                strict: false
-            }
-        ],
     }),
     defineExtendedConfig({
         input: 'src/entry/index.ts',

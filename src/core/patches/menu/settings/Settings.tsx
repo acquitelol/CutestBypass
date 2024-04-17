@@ -7,7 +7,6 @@ import About from './About';
 import Toggles from './Toggles';
 import Title from './Title';
 import Themes from './themes';
-import Updater from './Updater';
 
 const { React } = common;
 
@@ -27,10 +26,6 @@ function Settings() {
     
             <Section title='Themes'>
                 <Themes />
-            </Section>
-    
-            <Section title='Updater'>
-                <Updater />
             </Section>
     
             <Section title='About'>

@@ -6,8 +6,12 @@
  */
 function navigate(
     path: string | number,
-    prefix = '/student'
+    prefix = ''
 ) {
+    if (typeof path === 'number') {
+        path = '/';
+    }
+
     azalea.navigation.navigator.replace(prefix ? `${prefix}${path}` : path);
 }
 
