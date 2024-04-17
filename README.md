@@ -63,10 +63,7 @@
 
     <hr />
 
-- Due to the limited nature of Manifest V3 Chrome Extensions, having an updater without being on the Chrome Web Store is already *very* difficult and convoluted. As such, there is no way to manually check for updates, only to disable them and fetch from local sources.
-
-- **I see a 'Azalea started debugging this browser' message! What is this? Stop hacking me!** <br />
-This is only used as a way to execute Azalea's bundle dynamically, as there are many systems put in place by Chrome to prevent running code. If you would like to be extra sure, the only place in the entire codebase where the debugger is used is [here](https://github.com/acquitelol/azalea/blob/sparx-v2/src/loader/worker.ts), for updating and running the bundle.
+- Due to the limited nature of Manifest V3 Chrome Extensions, having an updater is *very* difficult and convoluted, due to Chrome's Storage APIs being too slow to load the code in time to yield React via exfiltration. As such, there is no way to update automatically. You must re-download Azalea from [releases](https://github.com/acquitelol/azalea) every time there is an update.
 
 > If you have any questions, please [raise an issue](https://github.com/acquitelol/azalea/issues/new) :3
 
@@ -78,21 +75,21 @@ This is only used as a way to execute Azalea's bundle dynamically, as there are 
 - Fork **[this repository](https://github.com/acquitelol/azalea)**
 - Clone the fork locally using:
 
-    ```sh
-    git clone https://github.com/[YOU]/[FORK]
+    ```console
+    $ git clone https://github.com/[YOU]/[FORK]
     ```
 
 - Open up the repository, and checkout a new branch:
 
-    ```sh
-    git checkout -b feature/meow
+    ```console
+    $ git checkout -b feature/meow
     ```
 
 - Add your amazing feature(s) and **commit & push to the branch**:
 
-    ```sh
-    git commit -m 'Added cutest new feature! ;3'
-    git push origin feature/meow
+    ```console
+    $ git commit -m 'Added cutest new feature! ;3'
+    $ git push origin feature/meow
     ```
 
 - Create a **[pull request](https://github.com/acquitelol/azalea/pulls)** and wait for it to be reviewed
