@@ -92,7 +92,7 @@ function handler() {
 
     patcher.after('render', WAC.type, (_, { props: { children } }) => {
         const topSection: any[] = findInReactTree(children, x => x?.find(y => y.props?.className?.includes('Bookwork') && y.props?.shapeVariant === 'Boxy'));
-        const bookworkSection = topSection?.find(x => x.props?.className?.startsWith('Bookwork') && x.props?.shapeVariant === 'Boxy')?.props?.children;
+        const bookworkSection = topSection?.find(x => x.props?.className?.includes('Bookwork') && x.props?.shapeVariant === 'Boxy')?.props?.children;
         const firstOption = findInReactTree(children, x => x.props.choices && x.props.option);
 
         if (!bookworkSection) return;
