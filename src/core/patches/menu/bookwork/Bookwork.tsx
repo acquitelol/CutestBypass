@@ -30,7 +30,7 @@ function Bookwork() {
                     value={query}
                     onChange={e => setQuery(e.target.value)}
                     maxLength={2}
-                    className='_Search_juc87_90'
+                    className='_AzaleaSearch'
                     style={styles.input}
                 />
             </div>

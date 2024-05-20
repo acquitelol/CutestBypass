@@ -40,8 +40,8 @@ function ColorInput({ label, color, colorKey, colorType, backgroundColor }: Colo
         label={capitalize(colorKey)}
         backgroundColor={backgroundColor}
         trailing={<div style={commonStyles.merge(x => [x.flex, x.align])}>
-            <input 
-                className={'_Search_juc87_90'}
+            <input
+                className={'_AzaleaSearch'}
                 style={styles.input}
                 placeholder={defaultTheme[colorType][colorKey]}
                 value={value as string}

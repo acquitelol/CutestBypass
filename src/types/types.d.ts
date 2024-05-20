@@ -1,8 +1,10 @@
 declare module '@azalea/types' {
+    import { ReactNode } from 'react';
     import { exfiltratedModules } from '@modules/data';
 
     export type MenuItem = {
         text: string;
+        leading: ReactNode;
         callback(...args: any[]): any | null;
     };
 
@@ -139,6 +141,7 @@ declare module '@azalea/buttons' {
 
     export type BaseButtonProps = AnyProps<{
         text: string;
+        leading?: ReactNode | null;
         trailing?: ReactNode | null;
         className?: string,
         onClick: Fn

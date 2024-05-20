@@ -12,45 +12,58 @@ const { Theming } = handlers;
 const { React } = modules.common;
 
 export default async function () {
-    const labelNode = await lazyDefine(() => document.querySelector('[class*="_XPCount_"]'));
-    const dropdownNode = await lazyDefine(() => document.querySelector('[class*="_DropdownMenuContent_"][role="menu"]'), undefined, Infinity);
+  const labelNode = await lazyDefine(() =>
+    document.querySelector('[class*="_XPCount_"]'),
+  );
+  const dropdownNode = await lazyDefine(
+    () =>
+      document.querySelector('[class*="_DropdownMenuContent_"][role="menu"]'),
+    undefined,
+    Infinity,
+  );
 
-    const Dropdown = findReact(dropdownNode);
+  const Dropdown = findReact(dropdownNode);
 
-    const unpatch = patcher.before('render', Dropdown.type, (args) => {
-        // Refresh the page if navigation patch failed
-        if (!azalea.navigation) window.location.href = window.location.href.replace(/azalea\/.*/g, '');
+  const unpatch = patcher.before('render', Dropdown.type, (args) => {
+    // Refresh the page if navigation patch failed
+    if (!azalea.navigation)
+      window.location.href = window.location.href.replace(/azalea\/.*/g, '');
 
-        // Apply label again, in-case the XP of the user changes
-        Theming.applyLabel(labelNode);
+    // Apply label again, in-case the XP of the user changes
+    Theming.applyLabel(labelNode);
 
-        const buttons = findInReactTree(args[0], x => (
-            Array.isArray(x.children) 
-            && x.className.includes('_DropdownMenuContent_')
-        ));
+    const buttons = findInReactTree(
+      args[0],
+      (x) =>
+        Array.isArray(x.children) &&
+        x.className.includes('_DropdownMenuContent_'),
+    );
 
-        if (!buttons) return;
+    if (!buttons) return;
 
-        // Map items and wrap the values in calls to abstract away the actual classes
-        const menuItems = Object.values(items)
-            .filter(item => item.Item)
-            .map(item => new item.Item()) satisfies MenuItem[];
+    // Map items and wrap the values in calls to abstract away the actual classes
+    const menuItems = Object.values(items)
+      .filter((item) => item.Item)
+      .map((item) => new item.Item()) satisfies MenuItem[];
 
-        menuItems.forEach(item => {
-            for (const button of buttons.children) {
-                if (button?.props?.text === item.text) return;
-            }
+    menuItems.forEach((item) => {
+      for (const button of buttons.children) {
+        if (button?.props?.text === item.text) return;
+      }
 
-            const index = buttons.children.findIndex(x => x?.props?.children === 'Logout');
+      const index = buttons.children.findIndex(x => findInReactTree(x, y => y[1] === 'Sign out'));
 
-            buttons.children.splice(index === -1 ? 1 : index, 0, (
-                <components.DropdownButton
-                    text={item.text}
-                    onClick={item.callback}
-                />
-            ));
-        });
+      buttons.children.splice(
+        index === -1 ? 1 : index,
+        0,
+        <components.DropdownButton 
+            text={item.text} 
+            leading={item.leading}
+            onClick={item.callback}
+        />,
+      );
     });
+  });
 
-    return unpatch;
+  return unpatch;
 }
